@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "foundationpoc"
+rootProject.name = "foundationpoc-lib"
 include(":app")
