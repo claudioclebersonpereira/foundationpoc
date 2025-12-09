@@ -5,17 +5,17 @@ plugins {
 }
 
 android {
-    namespace = "com.natura.foundationpoc"
+    namespace = "com.foundation.foundationpoc"
     compileSdk {
         version = release(35)
     }
 
     defaultConfig {
-        applicationId = "com.natura.foundationpoc"
+        applicationId = "com.foundation.foundationpoc"
         minSdk = 23
         targetSdk = 35
         versionCode = 1
-        versionName = "0.0.5"
+        versionName = "0.0.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -65,9 +65,9 @@ publishing {
             
             // from(components["release"]) 
 
-            groupId = "com.natura"
+            groupId = "com.foundation"
             artifactId = "foundationpoc"
-            version = "0.0.5"
+            version = "0.0.6"
         }
     }
 }
