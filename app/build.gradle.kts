@@ -1,6 +1,6 @@
 plugins {
     `maven-publish`
-    alias(libs.plugins.android.application)
+    id("com.android.library")
     alias(libs.plugins.kotlin.android)
 }
 
@@ -11,22 +11,19 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.foundation.foundationpoc"
         minSdk = 23
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.0.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     // The publishing block in android is primarily for libraries. 
     // If you convert this module to a library, this configuration helps prepare the release component.
-    // publishing {
-    //     singleVariant("release") {
-    //         withSourcesJar()
-    //     }
-    // }
+     publishing {
+         singleVariant("release") {
+             withSourcesJar()
+         }
+     }
 
     buildTypes {
         release {
@@ -58,16 +55,14 @@ dependencies {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            // The "release" component is typically available for Android Libraries (com.android.library).
-            // Since this is an Application module (com.android.application), you cannot use components["release"] directly.
-            // If you intend to publish an APK or AAB, you need to define artifacts manually.
-            // Example: artifact(tasks.getByName("bundleRelease"))
-            
-            // from(components["release"]) 
+            // This now works because it is a library
+            afterEvaluate {
+                from(components["release"])
+            }
 
             groupId = "com.foundation"
             artifactId = "foundationpoc"
-            version = "0.0.7"
+            version = "0.0.8"
         }
     }
 }
